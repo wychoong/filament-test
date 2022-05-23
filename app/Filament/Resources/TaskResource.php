@@ -21,25 +21,27 @@ class TaskResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $options = [
+            'show' => 'Show',
+            'hide' => 'Hide',
+        ];
+
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
+                Forms\Components\Select::make('title')
                     ->required()
-                    ->maxLength(255),
+                    ->options($options)
+                    ->reactive(),
                 SimpleRepeater::make('meta')
                     ->field(
                         TextInput::make('meta')
-                    ),
-                Forms\Components\HasManyRepeater::make('items')
-                    ->relationship('items')
-                    ->schema([
-                        TextInput::make('task'),
-                        SimpleRepeater::make('meta')
-                            ->field(
-                                TextInput::make('meta')
-                            )
-                    ])
-            ]);
+                    )
+                    ->visible(fn ($get) => $get('title') == 'show'),
+                Forms\Components\Select::make('type')
+                    ->options($options)
+                    ->searchable()
+            ])
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
