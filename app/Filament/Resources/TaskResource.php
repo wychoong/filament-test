@@ -12,6 +12,8 @@ use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\TaskResource\Pages;
 use RyanChandler\FilamentSimpleRepeater\SimpleRepeater;
 use App\Filament\Resources\TaskResource\RelationManagers;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\HasManyRepeater;
 
 class TaskResource extends Resource
 {
@@ -28,18 +30,19 @@ class TaskResource extends Resource
 
         return $form
             ->schema([
-                Forms\Components\Select::make('title')
-                    ->required()
-                    ->options($options)
-                    ->reactive(),
-                SimpleRepeater::make('meta')
-                    ->field(
-                        TextInput::make('meta')
-                    )
-                    ->visible(fn ($get) => $get('title') == 'show'),
-                Forms\Components\Select::make('type')
-                    ->options($options)
-                    ->searchable()
+                Card::make([
+                    Forms\Components\TextInput::make('title')
+                        ->required(),
+                    Forms\Components\HasManyRepeater::make('items')
+                        ->schema([
+                            TextInput::make('task'),
+                            SimpleRepeater::make('meta')
+                                ->field(
+                                    Forms\Components\TextInput::make('option')
+                                        ->required()
+                                )
+                        ])
+                ])
             ])
             ->columns(1);
     }
