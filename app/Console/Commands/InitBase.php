@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Console\Commands\Concerns\EnsureDatabaseExists;
 use Illuminate\Console\Command;
+use Illuminate\Database\Console\Migrations\MigrateCommand;
 
 class InitBase extends Command
 {
@@ -25,6 +26,8 @@ class InitBase extends Command
 
             return Command::FAILURE;
         }
+
+        $this->call(MigrateCommand::class);
 
         return $this->setup();
     }
