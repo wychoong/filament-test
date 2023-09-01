@@ -2,18 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\Task;
-use Filament\Tables;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\TaskResource\Pages;
-use RyanChandler\FilamentSimpleRepeater\SimpleRepeater;
 use App\Filament\Resources\TaskResource\RelationManagers;
+use App\Models\Task;
+use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\HasManyRepeater;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\Form;
+use Filament\Resources\Resource;
+use Filament\Resources\Table;
+use Filament\Tables;
 
 class TaskResource extends Resource
 {
@@ -36,11 +35,6 @@ class TaskResource extends Resource
                     Forms\Components\HasManyRepeater::make('items')
                         ->schema([
                             TextInput::make('task'),
-                            SimpleRepeater::make('meta')
-                                ->field(
-                                    Forms\Components\TextInput::make('option')
-                                        ->required()
-                                )
                         ])
                 ])
             ])
