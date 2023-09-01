@@ -9,15 +9,15 @@ class Task extends Model
 {
     use HasFactory;
 
-    var $fillable = [
+    public $fillable = [
         'title', 'meta',
     ];
 
-    var $casts = [
+    public $casts = [
         'meta' => 'array',
     ];
 
-    function items()
+    public function items()
     {
         return $this->hasMany(TaskItem::class);
     }

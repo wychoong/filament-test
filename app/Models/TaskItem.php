@@ -9,15 +9,15 @@ class TaskItem extends Model
 {
     use HasFactory;
 
-    var $fillable = [
+    public $fillable = [
         'task_id', 'task', 'meta',
     ];
 
-    var $casts = [
+    public $casts = [
         'meta' => 'array',
     ];
 
-    function task()
+    public function task()
     {
         return $this->belongsTo(Task::class);
     }
