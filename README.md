@@ -14,5 +14,6 @@
 ---------
 
 ###### note
-- default user included
+- default User included
+- a basic Todo list (Task, TaskItem model (Sushi) & resource included)
 - Filament's Spatie packages included

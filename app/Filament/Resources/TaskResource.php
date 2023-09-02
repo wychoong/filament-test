@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TaskResource\Pages;
+use App\Filament\Resources\TaskResource\RelationManagers\ItemsRelationManager;
 use App\Models\Task;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -22,8 +23,7 @@ class TaskResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required(),
-                Forms\Components\Textarea::make('meta')
-                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('summary'),
             ]);
     }
 
@@ -41,6 +41,7 @@ class TaskResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('summary'),
             ])
             ->filters([
                 //
@@ -61,7 +62,7 @@ class TaskResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ItemsRelationManager::class,
         ];
     }
 
