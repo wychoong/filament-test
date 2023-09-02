@@ -24,6 +24,12 @@ class TaskResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required(),
                 Forms\Components\Textarea::make('summary'),
+                Forms\Components\Select::make('category')
+                    ->native(false)
+                    ->options([
+                        'Shopping',
+                        'Work',
+                    ])
             ]);
     }
 

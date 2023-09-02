@@ -24,6 +24,13 @@ class ItemsRelationManager extends RelationManager
                     ->maxLength(255),
                 Forms\Components\Toggle::make('completed')
                     ->default(false),
+                Forms\Components\Select::make('category')
+                    ->native(false)
+                    ->options([
+                        'Low',
+                        'Medium',
+                        'High',
+                    ])
             ]);
     }
 

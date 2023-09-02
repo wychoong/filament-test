@@ -13,6 +13,7 @@ class TaskItem extends Model
     public $fillable = [
         'task_id', 'task', 'remarks',
         'completed', 'completed_at',
+        'category',
     ];
 
     protected $rows = [
