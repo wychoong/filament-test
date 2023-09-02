@@ -6,6 +6,13 @@
 
 ## For using this as your repo base
 - Bring your own .env
-- `composer require {packages}`
-- Customize `App\Console\Commands\InitBase` to suit your issue
+- `composer require {packages}` what is need for your issue
+- Make sure you work with the correct packages version
+- Customize `App\Console\Commands\InitBase` to setup your issue
 - Make sure `artisan test:init` can bootstrap the app to replicate your issue
+
+---------
+
+###### note
+- default user included
+- Filament's Spatie packages included

@@ -3,7 +3,8 @@
 namespace App\Filament\Pages;
 
 use App\Models\User;
-use Filament\Forms\Components\Component;
+use Filament\Facades\Filament;
+use Filament\Forms\Components\Placeholder;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Pages\Auth\Login as BaseLogin;
 use Illuminate\Support\Facades\Hash;
@@ -14,17 +15,7 @@ class Login extends BaseLogin
 
     private string $_password = 'password';
 
-    protected function getEmailFormComponent(): Component
-    {
-        return parent::getEmailFormComponent()
-            ->default($this->_email);
-    }
-
-    protected function getPasswordFormComponent(): Component
-    {
-        return parent::getPasswordFormComponent()
-            ->default($this->_password);
-    }
+    private string $_user = 'John Doe';
 
     public function authenticate(): ?LoginResponse
     {
@@ -32,10 +23,30 @@ class Login extends BaseLogin
         $user = User::firstOrCreate([
             'email' => $this->_email,
         ], [
-            'name' => 'John Doe',
+            'name' => $this->_user,
             'password' => Hash::make($this->_password),
         ]);
 
-        return parent::authenticate();
+        // dd($user);
+
+        Filament::auth()->login($user, true);
+
+        session()->regenerate();
+
+        return app(LoginResponse::class);
+    }
+
+    protected function getForms(): array
+    {
+        return [
+            'form' => $this->form(
+                $this->makeForm()
+                    ->schema([
+                        Placeholder::make('Login as')
+                            ->content($this->_email),
+                    ])
+                    ->statePath('data'),
+            ),
+        ];
     }
 }
