@@ -12,6 +12,7 @@ Steps to reproduce:
   
 ## For maintainer/tester
 - Bring your own .env
+- `composer install`
 - Run `artisan test:init`
 
 ## For using this as your repo base
