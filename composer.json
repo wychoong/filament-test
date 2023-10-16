@@ -4,15 +4,22 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/filament/packages/*",
+            "symlink": true
+        }
+    ],
     "require": {
         "php": "^8.1",
         "calebporzio/sushi": "^2.4",
         "doctrine/dbal": "^3.5",
-        "filament/filament": "^3.0",
-        "filament/spatie-laravel-media-library-plugin": "^3.0",
-        "filament/spatie-laravel-settings-plugin": "^3.0",
-        "filament/spatie-laravel-tags-plugin": "^3.0",
-        "filament/spatie-laravel-translatable-plugin": "^3.0",
+        "filament/filament": "*",
+        "filament/spatie-laravel-media-library-plugin": "*",
+        "filament/spatie-laravel-settings-plugin": "*",
+        "filament/spatie-laravel-tags-plugin": "*",
+        "filament/spatie-laravel-translatable-plugin": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.20",
         "laravel/sanctum": "^3.2",
