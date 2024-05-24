@@ -26,6 +26,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
+            ->defaultThemeMode(\Filament\Enums\ThemeMode::Light)
             ->login(Login::class)
             ->colors([
                 'primary' => Color::Amber,
