@@ -11,7 +11,7 @@ class Task extends Model
     use \Sushi\Sushi;
 
     public $fillable = [
-        'title', 'summary',
+        'title', 'summary', 'meta',
     ];
 
     protected $rows = [
@@ -19,12 +19,17 @@ class Task extends Model
             'id' => 1,
             'title' => 'Todo 1',
             'summary' => '',
+            'meta' => [],
         ],
         [
             'id' => 2,
             'title' => 'Todo 2',
-            'meta' => '',
+            'meta' => [],
         ],
+    ];
+
+    protected $casts = [
+        'meta' => 'array',
     ];
 
     public function items()

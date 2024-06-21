@@ -23,7 +23,16 @@ class TaskResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required(),
-                Forms\Components\Textarea::make('summary'),
+                Forms\Components\Toggle::make('toggle'),
+                Forms\Components\Textarea::make('summary')
+                    // ->afterStateUpdated(fn ($get, $set, $state) => $set('meta', [['key' => $state, 'value' => $state]]))
+                    // ->afterStateUpdated(fn ($get, $set, $state) => $set('meta', [['key' => $state, 'value' => $state]]))
+                    // ->debounce()
+                    ->requiredIf('toggle', 'true'),
+                Forms\Components\KeyValue::make('meta')
+                    ->mutateDehydratedStateUsing(fn ($state) => dd($state))
+                    ->live()
+                    ->reorderable(),
             ]);
     }
 
