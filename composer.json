@@ -12,26 +12,23 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "calebporzio/sushi": "^2.4",
-        "doctrine/dbal": "^3.5",
         "filament/filament": "*",
         "filament/spatie-laravel-media-library-plugin": "*",
         "filament/spatie-laravel-settings-plugin": "*",
         "filament/spatie-laravel-tags-plugin": "*",
         "filament/spatie-laravel-translatable-plugin": "*",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.20",
-        "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/framework": "^11",
+        "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.12",
-        "laravel/sail": "^1.18",
+        "laravel/pint": "^1.16",
+        "laravel/sail": "^1.29",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
+        "nunomaduro/collision": "^8.0",
+        "pestphp/pest": "^2.34",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -70,7 +67,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
