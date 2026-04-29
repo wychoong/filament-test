@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Sushi\Sushi;
 
 class TaskItem extends Model
 {
     use HasFactory;
-    use \Sushi\Sushi;
+    use Sushi;
 
     public $fillable = [
         'task_id', 'task', 'remarks',

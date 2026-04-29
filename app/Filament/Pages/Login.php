@@ -3,10 +3,11 @@
 namespace App\Filament\Pages;
 
 use App\Models\User;
+use Filament\Auth\Http\Responses\Contracts\LoginResponse;
+use Filament\Auth\Pages\Login as BaseLogin;
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Placeholder;
-use Filament\Http\Responses\Auth\Contracts\LoginResponse;
-use Filament\Pages\Auth\Login as BaseLogin;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
 
 class Login extends BaseLogin
@@ -36,17 +37,12 @@ class Login extends BaseLogin
         return app(LoginResponse::class);
     }
 
-    protected function getForms(): array
+    public function form(Schema $schema): Schema
     {
-        return [
-            'form' => $this->form(
-                $this->makeForm()
-                    ->schema([
-                        Placeholder::make('Login as')
-                            ->content($this->_email),
-                    ])
-                    ->statePath('data'),
-            ),
-        ];
+        return $schema
+            ->components([
+                TextEntry::make('Login as')
+                    ->state($this->_email),
+            ]);
     }
 }

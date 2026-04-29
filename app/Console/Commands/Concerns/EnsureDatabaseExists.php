@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Concerns;
 
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 trait EnsureDatabaseExists
@@ -12,7 +13,7 @@ trait EnsureDatabaseExists
             DB::connection()->getPDO();
 
             $dbExists = true;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $dbExists = false;
         }
 

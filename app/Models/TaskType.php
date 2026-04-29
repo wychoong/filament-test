@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Sushi\Sushi;
 
 class TaskType extends Model
 {
     use HasFactory;
-    use \Sushi\Sushi;
+    use Sushi;
 
     public $fillable = [
         'label',
